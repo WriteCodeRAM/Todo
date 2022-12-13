@@ -16,13 +16,13 @@ function showForm() {
 
 newProjectBtn.addEventListener('click', showForm);
 
-const createTask = () => {
-  const main = document.querySelector('.main');
-  const heading = document.createElement('h1');
-  const list = document.createElement('li');
+// const createTask = () => {
+//   const main = document.querySelector('.main');
+//   const heading = document.createElement('h1');
+//   const list = document.createElement('li');
 
-  heading.innerText = 'What would you like to accomplish today?';
-  main.appendChild(heading);
-};
+//   heading.innerText = 'What would you like to accomplish today?';
+//   main.appendChild(heading);
+// };
 
 // addProject();

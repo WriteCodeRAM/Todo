@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: aliceblue;
+    
 }
 
 body{
@@ -20,13 +20,24 @@ nav{
     align-items: center;
     justify-content: space-around;
     border-bottom: solid 2px #444;
-    padding: 12px;
+    padding: 1.5rem;
     /* background-color: #fff; */
-    background-color: black;
+    background-color: #007fff;
 }
 
 .main{
     display: flex;
+}
+
+.todo-section{
+
+    background-color: #003459;
+    flex: 1;
+    padding: 48px;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    /* align-items: center; */
 }
 
 .sidebar {
@@ -38,6 +49,8 @@ nav{
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    background-color: #f5fafa;
+  
 }
 
 .top{
@@ -101,3 +114,53 @@ label, input{
 input{
     color: black;
 }
+
+p{
+    /* border: solid 2px red; */
+    margin-top: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.projectHeader {
+    color: #f5fafa;
+    font-size: 2.5rem;
+    letter-spacing: 0.1rem;
+}
+
+.task{
+    /* width: 300px; */
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: #94969d50 0 5px 20px;
+}
+/* modal stuff */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .modal form {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    height: 300px;
+
+  }
+  
+  .modal.hide {
+    display: none;
+  }

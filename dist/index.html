@@ -16,7 +16,7 @@
       <div class="main">
         <div class="sidebar">
             <div class="top">
-            <h2> Projects </h2>
+            <h2> My Projects </h2>
             <button class="newProject">+</button>
 
         </div>
@@ -46,8 +46,39 @@
                 <button class="submitButton" type="button">Create Project</button>
                 </form>
         </div>
-        <div class="project-section">
-            <h1>test</h1>
+        <div class="todo-section">
+            <div class="todo-header">
+                <h2 class="projectHeader"></h2>
+                <button class="newProject">+</button>
+            </div>
+            <div class="todo-list">
+
+                <div class="modal hide">
+                    <form action="" id="myform">
+            
+            
+                        <label for="Author's Name">*Author's Name</label>
+            
+                           <input type="text" name="author_name" id="author_name" required minlength="2" maxlength="28" value="George R.R. Martin">
+                           
+                
+                           <label for="Book Title">*Book Title</label>
+                           <input type="text" name="book_title" id="book_title" required minlength="1" maxlength="35" value="A Game Of Thrones">
+                
+                            <label for="pages">*Number of Pages</label>
+                            <input type="number" name="pages" id="pages" required min="1" max="10000" value="694">
+                        
+                        <div class="">
+                            <label for="read">Have you read this book?</label>
+                            <input type="checkbox" id="checkbox" >
+                        </div>
+                
+                         <button class='submit' type="button" id="submit">Let's Read!</button>
+                       </form>
+                    </div>
+             
+                
+                </div>
         </div>
       </div> 
     
