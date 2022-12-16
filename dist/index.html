@@ -8,6 +8,7 @@
 </head>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
 <body>
     <nav>
         <div class="logo"> <h1>Todo</h1></div>
@@ -22,7 +23,7 @@
         </div>
         <div class="projectList"></div>
        
-                <form action="">
+                <form class="newProjectForm" action="">
                     <div class="titleInput">
                     <label for="title">Project Name</label>
                     <input type="text" id="titleInput" name="title" required minlength="1">
@@ -48,32 +49,40 @@
         </div>
         <div class="todo-section">
             <div class="todo-header">
+
                 <h2 class="projectHeader"></h2>
-                <button class="newProject">+</button>
+                <!-- <button class="newTaskBtn">Add task</button> -->
+
             </div>
             <div class="todo-list">
 
-                <div class="modal hide">
-                    <form action="" id="myform">
+                <div class="myForm">
+
+                    <form action="" id="myForm" class="hide">
+                        <h2>New Task</h2>
             
             
-                        <label for="Author's Name">*Author's Name</label>
+                        <label for="Task Name">*Task Name</label>
             
-                           <input type="text" name="author_name" id="author_name" required minlength="2" maxlength="28" value="George R.R. Martin">
+                           <input type="text" name="task" id="task" required minlength="2" maxlength="28" value="clean dishes">
+
+                        <label for="dueDate">*Due date</label>
+            
+                           <input type="date" name="date" id="date" required>
                            
                 
-                           <label for="Book Title">*Book Title</label>
-                           <input type="text" name="book_title" id="book_title" required minlength="1" maxlength="35" value="A Game Of Thrones">
+                           <label for="Description">*Description</label>
+                           <input type="text" name="description" id="description" required minlength="1" maxlength="35" value="use extra soap">
                 
-                            <label for="pages">*Number of Pages</label>
-                            <input type="number" name="pages" id="pages" required min="1" max="10000" value="694">
+                            <label for="priority">*Priority</label>
+                            <select name="priority" id="priority"> 
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                        </select>
                         
-                        <div class="">
-                            <label for="read">Have you read this book?</label>
-                            <input type="checkbox" id="checkbox" >
-                        </div>
                 
-                         <button class='submit' type="button" id="submit">Let's Read!</button>
+                         <button class='submit' type="button" id="submit">Create task!</button>
                        </form>
                     </div>
              
@@ -81,7 +90,6 @@
                 </div>
         </div>
       </div> 
-    
-    <script src="main.js"></script>
+      <script src="main.js" defer></script>
 </body>
 </html>

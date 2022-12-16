@@ -1,14 +1,15 @@
+import { createTaskForm, displayTasks } from './tasks';
+
 const titleInput = document.getElementById('titleInput');
-const descriptionInput = document.getElementById('descriptionInput');
-const dueInput = document.getElementById('dateInput');
-const priorityInput = document.getElementById('priorityInput');
-const form = document.querySelector('form');
+const newProjectForm = document.querySelector('.newProjectForm');
 const projectList = document.querySelector('.projectList');
-const todoSection = document.querySelector('.todo-section');
 const todoList = document.querySelector('.todo-list');
 const projectHeader = document.querySelector('.projectHeader');
+
+//stores projects
 let projects = [];
 
+//creates project
 class Project {
   constructor(title, task) {
     this.title = title;
@@ -16,33 +17,32 @@ class Project {
   }
 }
 
+//add project to array if valid title
 const addProject = () => {
+  console.log(createTaskForm);
   if (titleInput.value) {
     const newProject = new Project(titleInput.value);
-    // newProject.toDo = 'test';
     projects.push(newProject);
     console.log(projects);
   }
-  form.classList.add('hide');
-  todoSection.innerText = '';
+  newProjectForm.classList.add('hide');
 
   displayProject();
 };
 
+//displays name of projects in sidebar
 let i = 0;
 const displayProject = () => {
   for (i; i < projects.length; i++) {
-    // projectList.innerText = projects[i].title;
     const createP = document.createElement('p');
     createP.innerText = projects[i].title;
-    createP.classList.add(i);
     projectList.appendChild(createP);
 
-    //not working how id like because I owuld like to add EventL like displayTodo(projects[i]) but this makes it run immediately not on click
     createP.addEventListener('click', displayTasks(projects[i]));
+    //way to allow user to swap between projects displaying appropriate tasks for each ?
+
     createP.addEventListener('click', (e) => {
-      console.log(e);
-      //   console.log(projects.find(isTitle(e.target.innerText)));
+      //this works but feels sketch
       let title = e.target.innerText;
       for (let i = 0; i < projects.length; i++) {
         if (projects[i].title === title) {
@@ -50,41 +50,7 @@ const displayProject = () => {
         }
       }
     });
-
-    // displayTodo();
   }
 };
 
-const addTodo = (project) => {};
-
-const displayTasks = (project) => {
-  const keys = Object.values(project);
-  todoSection.innerText = '';
-
-  for (let i = 0; i < keys.length; i++) {
-    if (i == 0) {
-      projectHeader.innerText = project.title;
-      todoSection.appendChild(projectHeader);
-    } else {
-      const createP = document.createElement('p');
-      createP.innerText = keys[i];
-      createP.classList.add('task');
-      todoSection.appendChild(createP);
-    }
-  }
-
-  //   const createP = document.createElement('p');
-  //   createP.innerText = project.task;
-  //   createP.classList.add('task');
-
-  //   projectHeader.innerHTML = project.title;
-  //   todoList.appendChild(createP);
-};
-
-// function clearTodo() {
-//   return (todoList.innerHTML = '');
-// }
-export default addProject;
-
-// TODO MAKE IT SO THAT WHEN A PROJECT IS CREATED, USERS HAVE THE ABILITY TO ADD TASKS WITH THE CLICK OF A BUTTON
-// MAKE BUTTON SHOW MODAL FORM
+export { addProject, todoList, projectHeader };

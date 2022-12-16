@@ -1,7 +1,4 @@
-import createUI from './UI';
-import addProject from './projects';
-
-createUI();
+import { addProject } from './projects';
 
 const newProjectBtn = document.querySelector('.newProject');
 const submitBtn = document.querySelector('.submitButton');
@@ -9,20 +6,11 @@ const submitBtn = document.querySelector('.submitButton');
 submitBtn.addEventListener('click', addProject);
 
 function showForm() {
-  const form = document.querySelector('form');
-  form.classList.remove('hide');
-  form.classList.add('show');
+  // const form = document.querySelector('form');
+  const newProjectForm = document.querySelector('.newProjectForm');
+
+  newProjectForm.classList.remove('hide');
+  newProjectForm.classList.add('show');
 }
 
 newProjectBtn.addEventListener('click', showForm);
-
-// const createTask = () => {
-//   const main = document.querySelector('.main');
-//   const heading = document.createElement('h1');
-//   const list = document.createElement('li');
-
-//   heading.innerText = 'What would you like to accomplish today?';
-//   main.appendChild(heading);
-// };
-
-// addProject();
