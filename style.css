@@ -14,6 +14,9 @@ body{
     background-color: black;
 }
 
+h2{
+    /* color: #007fff; */
+}
 
 nav{
     display: flex;
@@ -90,7 +93,7 @@ button:hover{
 
 }
 
-form{
+.newProjectForm{
     display: none;
     flex-direction: column;
     border: solid 2px #444; 
@@ -108,6 +111,10 @@ label, input{
 }
 
 .hide{
+    display: none;
+}
+
+.hiding{
     display: none;
 }
 
@@ -138,29 +145,53 @@ p{
 }
 /* modal stuff */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+   margin: 0 auto ;
     background-color: rgba(0, 0, 0, .3);
-    z-index: 999;
+    /* z-index: 999; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+    max-width: 30%;
   }
   
-  .modal form {
+  /* .modal  */
+  form {
     background-color: #fff;
     border-radius: 5px;
     padding: 10px;
-    width: 300px;
-    height: 300px;
+    color: #fff;
 
   }
   
-  .modal.hide {
+  .hide {
     display: none;
+  }
+
+
+  .newTaskBtn{
+    
+    background-color: #007fff;
+
+    padding: 10px 20px;
+        /* border: none; */
+        font: inherit;
+        color: #fff;
+        /* background-color: transparent; */
+        cursor: pointer;
+
+  }
+
+  #myform{
+display: flex;
+flex-direction: column;
+  }
+
+  .target{
+    display: none;
+  }
+
+  .todo-header{
+    display: flex;
   }
