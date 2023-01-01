@@ -18,6 +18,10 @@ h2{
     /* color: #007fff; */
 }
 
+label{
+    color: #007fff;
+}
+
 nav{
     display: flex;
     align-items: center;
