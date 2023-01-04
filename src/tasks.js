@@ -2,15 +2,16 @@ import { add } from 'lodash';
 import { todoList, projectHeader, projects } from './projects';
 
 class Task {
-  constructor(title, dueDate, description, priority) {
+  constructor(title, dueDate, description, priority, completed) {
     this.title = title;
     this.dueDate = dueDate;
     this.description = description;
     this.priority = priority;
+    this.completed;
   }
 }
 
-//get form and its inputs to work properly
+//get the task form and its inputs to work properly
 function showForm(project, index) {
   const form = document.createElement('form');
   form.innerHTML = `<h2>New Task</h2>
@@ -48,7 +49,6 @@ function showForm(project, index) {
   const taskSubmitBtn = document.querySelector('#taskSubmit');
 
   taskSubmitBtn.addEventListener('click', () => {
-    console.log('test');
     addTask(
       index,
       taskTitle.value,
@@ -98,8 +98,8 @@ const displayTasks = (project, index) => {
 
     buttons.push(button);
   }
-  //reset todolist
 
+  //clear todolist
   todoList.innerText = ``;
   //set project header
   projectHeader.innerText = project.title;
@@ -107,9 +107,54 @@ const displayTasks = (project, index) => {
 
   //displays task for project
   project.tasks.forEach((task) => {
+    //creates p for details of task
     const createP = document.createElement('p');
-    createP.innerText = task.title;
+    createP.innerText = `${task.title}, ${task.dueDate}`;
     createP.classList.add('task');
+
+    //compelete task components
+    const checkDiv = document.createElement('div');
+    const checkbox = document.createElement('input');
+    const checkSpan = document.createElement('span');
+
+    if (task.priority === 'high') {
+      checkSpan.classList.add('high');
+    } else if (task.description === 'Medium') {
+      checkSpan.classList.add('medium');
+    } else {
+      checkSpan.classList.add('low');
+    }
+
+    checkbox.type = 'checkbox';
+    checkbox.name = 'name';
+    checkbox.value = 'value';
+    checkbox.id = 'round';
+
+    // completed task logic
+    if (task.completed == 'complete') {
+      createP.classList.add('complete');
+      task.completed = 'complete';
+      checkbox.classList.add('comp');
+    }
+    checkbox.addEventListener('click', () => {
+      if (checkbox.checked) {
+        createP.classList.add('complete');
+        task.completed = 'complete';
+        checkbox.classList.add('comp');
+      } else {
+        createP.classList.remove('complete');
+        checkbox.classList.remove('comp');
+        task.completed = 'incomplete';
+      }
+    });
+    checkSpan.appendChild(checkbox);
+
+    checkDiv.appendChild(checkSpan);
+    // const descriptionP = document.createElement('p');
+    // descriptionP.innerText = task.priority;
+
+    // createP.appendChild(descriptionP);
+    createP.appendChild(checkDiv);
     todoList.appendChild(createP);
   });
 
@@ -123,7 +168,6 @@ const displayTasks = (project, index) => {
 const addTask = (index, taskName, dueDate, description, priority) => {
   if (taskName !== '' && dueDate && description && priority) {
     const newTask = new Task(taskName, dueDate, description, priority);
-    console.log(index);
 
     //this is where things get weird
     //works the first time, but when trying to add a new task it doesnt bc it cant reference the index anymore
