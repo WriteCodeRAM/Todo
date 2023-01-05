@@ -54,12 +54,16 @@ nav{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     gap: 16px;
     background-color: #f5fafa;
   
 }
 
+.top-container{
+    display: flex;
+    justify-content: center;
+}
 .top{
     display: flex;
     gap: 12px;
@@ -252,3 +256,37 @@ flex-direction: column;
     color: #007fff;
 }
 
+.sidebar p{
+   text-align: center;
+
+}
+
+.selected{
+    background-color: #007fff;
+}
+
+
+.trash{
+    width: 24px;
+    height: 24px;
+}
+
+.trash:hover{
+    background-color: red;
+    border-radius: 20%;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+
+.sidebar p{
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.sidebarDiv{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
