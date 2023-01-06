@@ -16,12 +16,12 @@ class Project {
     //thinking of having each project contain an array of objects each representing a single task
     //clean dishes (default task)
     this.tasks = [
-      {
-        title: 'clean dishes',
-        dueDate: '12/29/22',
-        priority: 'high',
-        description: 'use extra soap',
-      },
+      //   {
+      //     title: 'clean dishes',
+      //     dueDate: '12/29/22',
+      //     priority: 'high',
+      //     description: 'use extra soap',
+      //   },
     ];
   }
 }
@@ -31,8 +31,10 @@ const addProject = () => {
   if (titleInput.value) {
     const newProject = new Project(titleInput.value);
     projects.push(newProject);
+    console.log(titleInput);
   }
   newProjectForm.classList.add('hide');
+  titleInput.value = '';
 
   displayProject();
 };
@@ -41,13 +43,27 @@ const addProject = () => {
 let i = 0;
 const displayProject = () => {
   for (i; i < projects.length; i++) {
+    //sidebar elements
+
+    const createDiv = document.createElement('div');
     const createP = document.createElement('p');
+    const createDelP = document.createElement('p');
     createP.innerText = projects[i].title;
-    projectList.appendChild(createP);
 
-    //this should display tasks once new project is created,
-    //problem may be here too
+    createP.setAttribute('id', i);
 
+    const deleteProjectBtn = document.createElement('button');
+    deleteProjectBtn.innerText = 'X';
+    deleteProjectBtn.setAttribute('id', i);
+    deleteProjectBtn.classList.add('trash');
+
+    createDelP.appendChild(deleteProjectBtn);
+    createDiv.appendChild(createP);
+    // createDiv.appendChild(createDelP);
+    createDiv.classList.add('sidebarDiv');
+    projectList.appendChild(createDiv);
+
+    //HOW TO CORRELATE i with projectTabs[i] I only want the current projectTabs[i] to get the class
     createP.addEventListener('click', displayTasks(projects[i], i));
     //way to allow user to swap between projects displaying appropriate tasks for each ?
 
@@ -61,6 +77,20 @@ const displayProject = () => {
         }
       }
     });
+
+    //delete button listener
+    function removeProject() {
+      const id = deleteProjectBtn.getAttribute('id');
+      projects.pop(id);
+
+      const selectedProject = document.querySelector(`[id="${id}"]`);
+      selectedProject.remove();
+      console.log(projects);
+      displayProject();
+    }
+
+    deleteProjectBtn.addEventListener('click', removeProject);
+    //highlight selected project maybe?
   }
 };
 

@@ -109,7 +109,8 @@ const displayTasks = (project, index) => {
   project.tasks.forEach((task) => {
     //creates p for details of task
     const createP = document.createElement('p');
-    createP.innerText = `${task.title}, ${task.dueDate}`;
+
+    createP.innerText = `${task.title}, ${task.dueDate}, ${task.priority}`;
     createP.classList.add('task');
 
     //compelete task components
@@ -117,7 +118,7 @@ const displayTasks = (project, index) => {
     const checkbox = document.createElement('input');
     const checkSpan = document.createElement('span');
 
-    if (task.priority === 'high') {
+    if (task.priority === 'high' || task.description === 'High') {
       checkSpan.classList.add('high');
     } else if (task.description === 'Medium') {
       checkSpan.classList.add('medium');
@@ -169,7 +170,6 @@ const addTask = (index, taskName, dueDate, description, priority) => {
   if (taskName !== '' && dueDate && description && priority) {
     const newTask = new Task(taskName, dueDate, description, priority);
 
-    //this is where things get weird
     //works the first time, but when trying to add a new task it doesnt bc it cant reference the index anymore
     projects[index].tasks.push(newTask);
     displayTasks(projects[index]);
